@@ -28,8 +28,7 @@ This project simulates a real-world data processing application that **needs Dev
 ├── Dockerfile            # Container config (INSECURE - root user)  
 ├── docker-compose.yml    # Development stack (INCOMPLETE)
 ├── requirements.txt      # Basic dependencies
-├── CHALLENGE.md          # Detailed implementation tasks
-└── DEVOPS_INTERVIEW_GUIDE.md  # Interviewer reference
+└── docker-compose.yml   # Development environment
 ```
 ├── tests/
 │   ├── test_processor.py        # Unit tests for processor
@@ -157,27 +156,26 @@ docker build -t datalib .
 - No containerization strategy
 - Missing monitoring/observability
 
-## 🎯 Interview Challenge
+## 🎯 DevOps Interview Challenge
 
 ### Background
-You are a new developer joining the team that maintains this data processing library. The business team has requested a new feature, and you need to understand the existing codebase and implement the requested functionality.
+You are a **DevOps engineer** joining the team that maintains this Python data processing platform. The application works locally, but the infrastructure and CI/CD pipeline have critical issues that need immediate attention. Your mission is to diagnose and fix these DevOps problems while implementing best practices.
 
-### Current System Capabilities
+### Current System State
 
-The `datalib` library currently provides:
+The platform currently has:
 
-1. **Data Processing** (`DataProcessor`):
-   - Load JSON and CSV files
-   - Filter data by field values
-   - Aggregate data by counting field values
-   - Track processing statistics
+1. **Working Application Code**:
+   - Python data processing library with unit tests
+   - Customer analysis and report generation scripts
+   - Sample data for testing and validation
 
-2. **Data Validation** (`DataValidator`):
-   - Email format validation
-   - Required field validation
-   - Data type validation
-   - Date format validation
-   - Numeric range validation
+2. **Broken DevOps Infrastructure**:
+   - GitHub Actions pipeline with dependency and path issues
+   - Insecure Docker container running as root
+   - Kubernetes manifests missing security contexts
+   - Hardcoded configuration values
+   - No security scanning or monitoring
    - Complete dataset validation
 
 3. **Data Formatting** (`DataFormatter`):
@@ -187,96 +185,94 @@ The `datalib` library currently provides:
    - Summary report generation
    - Text table formatting
 
-### 🎯 Feature Request: Data Transformation Module
+## 🚀 The Challenge: Fix the Infrastructure
 
-**Business Requirement:**
-"We need to add data transformation capabilities to clean and standardize our data before analysis. Specifically, we need to be able to normalize text fields, handle missing values, and apply data transformations."
+### What's Currently Broken?
 
-### Your Task
+The DevOps infrastructure has several issues that need fixing:
 
-Implement a new `DataTransformer` class in the `datalib` library with the following functionality:
+#### 1. CI/CD Pipeline Issues (.github/workflows/pipeline.yml)
+- ❌ Missing dependency installation step
+- ❌ Incorrect coverage report paths
+- ❌ No security vulnerability scanning
+- ❌ Integration tests not properly configured
+- ❌ No deployment automation
 
-#### Required Methods:
+#### 2. Docker Security Problems (Dockerfile)
+- ❌ Container running as root user
+- ❌ No multi-stage build optimization
+- ❌ Unnecessary packages installed
+- ❌ No health checks configured
+- ❌ Insecure base image practices
 
-1. **`normalize_text(text: str, options: dict = None) -> str`**
-   - Convert text to lowercase
-   - Remove extra whitespace
-   - Remove special characters (configurable)
-   - Handle None/empty values
+#### 3. Kubernetes Configuration Gaps (k8s/deployment.yaml)
+- ❌ Missing security contexts
+- ❌ No resource limits or requests
+- ❌ Missing readiness/liveness probes
+- ❌ No pod security policies
+- ❌ Insecure service configuration
 
-2. **`handle_missing_values(data: List[Dict], strategy: str = 'remove', fill_value: Any = None) -> List[Dict]`**
-   - Strategy options: 'remove', 'fill', 'skip'
-   - Support different fill values for different data types
+### Your Mission
 
-3. **`standardize_dates(data: List[Dict], date_fields: List[str], target_format: str = '%Y-%m-%d') -> List[Dict]`**
-   - Convert various date formats to a standard format
-   - Handle common date formats automatically
+Fix these infrastructure issues to create a production-ready deployment pipeline with proper security and monitoring.
 
-4. **`transform_dataset(data: List[Dict], transformations: List[Dict]) -> List[Dict]`**
-   - Apply multiple transformations in sequence
-   - Support transformation pipeline configuration
+## 📋 Challenge Tasks
 
-#### Implementation Requirements:
+### 1. 🔧 Fix the CI/CD Pipeline
+**File:** `.github/workflows/pipeline.yml`
 
-1. **Create the new file:** `src/datalib/transformer.py`
-2. **Update the main module:** Add import to `src/datalib/__init__.py`
-3. **Write comprehensive tests:** Create `tests/test_transformer.py`
-4. **Update the analysis script:** Modify `scripts/analyze_customers.py` to use the new transformer
-5. **Ensure CI/CD passes:** All existing tests should continue to pass
+**Required fixes:**
+- Install Python dependencies properly
+- Fix test coverage reporting paths
+- Add security vulnerability scanning
+- Configure integration test environment
+- Implement proper deployment stages
 
-#### Example Usage:
-```python
-from datalib import DataTransformer
+### 2. 🐳 Secure the Docker Container
+**File:** `Dockerfile`
 
-transformer = DataTransformer()
+**Security improvements needed:**
+- Implement non-root user
+- Add multi-stage build
+- Remove unnecessary packages
+- Add health checks
+- Use secure base images
 
-# Normalize text
-clean_text = transformer.normalize_text("  Hello, World!  ")
+### 3. ☸️ Harden Kubernetes Deployment
+**File:** `k8s/deployment.yaml`
 
-# Handle missing values
-clean_data = transformer.handle_missing_values(data, strategy='fill', fill_value='Unknown')
+**Security enhancements required:**
+- Add security contexts
+- Configure resource limits
+- Implement health checks
+- Add pod security policies
+- Secure service configuration
 
-# Standardize dates
-standardized_data = transformer.standardize_dates(data, ['created_date', 'updated_date'])
+### 4. 📊 Verify Everything Works
+**Validation requirements:**
+- All pipeline stages pass ✅
+- Container security scan passes ✅
+- Application runs correctly ✅
+- Kubernetes deployment succeeds ✅
 
-# Apply transformation pipeline
-transformations = [
-    {'type': 'normalize_text', 'fields': ['name', 'description']},
-    {'type': 'handle_missing', 'strategy': 'fill', 'fill_value': 'N/A'}
-]
-transformed_data = transformer.transform_dataset(data, transformations)
-```
+## 🔍 Assessment Areas
 
-## 📝 Evaluation Criteria
+### DevOps Skills Being Evaluated:
 
-You will be evaluated on:
+1. **CI/CD Pipeline Design** - Understanding of automated testing and deployment
+2. **Container Security** - Knowledge of Docker security best practices
+3. **Kubernetes Operations** - Understanding of K8s security and resource management
+4. **Problem-Solving** - Systematic approach to identifying and fixing issues
+5. **Security Awareness** - Implementation of security best practices
+6. **Documentation** - Clear explanation of changes and decisions
 
-1. **Code Understanding** - How well you understand the existing codebase structure and patterns
-2. **Implementation Quality** - Clean, readable, and maintainable code following project conventions
-3. **Testing** - Comprehensive unit tests for the new functionality
-4. **Integration** - Proper integration with existing codebase and updating relevant scripts
-5. **Documentation** - Clear docstrings and comments
-6. **Problem-Solving** - How you handle edge cases and error conditions
+## 💡 Getting Started
 
-## 💡 Hints and Guidelines
-
-1. **Study the existing code patterns** - Look at how other classes are implemented
-2. **Follow the existing code style** - Match the docstring format and naming conventions
-3. **Consider edge cases** - What happens with empty data, None values, invalid inputs?
-4. **Test thoroughly** - Write tests for both success and failure cases
-5. **Integration is key** - Make sure your changes work with the existing scripts
-6. **Ask questions** - If something is unclear, don't hesitate to ask
-
-## 🛠️ CI/CD Pipeline
-
-The project includes a GitHub Actions pipeline that:
-- Runs unit tests with coverage reporting
-- Performs code quality checks (linting, formatting)
-- Executes integration tests
-- Runs security scans
-- Simulates deployment to staging and production
-
-Your implementation should not break the existing pipeline!
+1. **Clone the repository** and examine the current state
+2. **Run the pipeline** to see what fails
+3. **Analyze the errors** systematically
+4. **Fix issues one by one** and test locally
+5. **Document your changes** and reasoning
 
 ## 📊 Sample Data
 
@@ -318,7 +314,7 @@ Your implementation should not break the existing pipeline!
 - **Pipeline Logs** - Check GitHub Actions for specific error details
 - **Local Testing** - Always verify fixes work in your environment first
 
-Ready to dive in? Check out **[CHALLENGE.md](./CHALLENGE.md)** for detailed instructions!
+Ready to start fixing? Begin by examining the current pipeline failures and work through each issue systematically!
 
 Good luck! 🚀
 
