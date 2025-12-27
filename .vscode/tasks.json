@@ -1,0 +1,46 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run Customer Analysis",
+			"type": "shell",
+			"command": "python3 scripts/analyze_customers.py data/customers.json",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Generate Sales Report (JSON)",
+			"type": "shell",
+			"command": "python3 scripts/generate_report.py data/sales.json json",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Generate Sales Report (CSV)",
+			"type": "shell",
+			"command": "python3 scripts/generate_report.py data/sales.json csv",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Run Unit Tests",
+			"type": "shell",
+			"command": "python3 -m pytest tests/ -v",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Run All Tests and Analysis",
+			"type": "shell",
+			"command": "python3 -m pytest tests/ -v && python3 scripts/analyze_customers.py data/customers.json",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test",
+			"dependsOrder": "sequence"
+		}
+	]
+}

@@ -1,0 +1,21 @@
+{
+  "report_generated": "2025-12-27T10:24:58.528767",
+  "summary": {
+    "total_transactions": 10,
+    "total_sales": 1606.51,
+    "average_transaction": 160.651,
+    "total_sales_formatted": "USD 1,606.51",
+    "average_transaction_formatted": "USD 160.65"
+  },
+  "sales_by_category": {
+    "Electronics": 925.97,
+    "Clothing": 459.5,
+    "Books": 77.99000000000001,
+    "Home": 143.05
+  },
+  "sales_by_month": {
+    "2024-01": 560.48,
+    "2024-02": 758.23,
+    "2024-03": 287.8
+  }
+}

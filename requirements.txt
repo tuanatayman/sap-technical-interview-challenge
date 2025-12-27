@@ -1,0 +1,10 @@
+# Data Processing Library
+
+## Installation and Dependencies
+pytest>=7.0.0
+pytest-cov>=4.0.0
+
+# Optional: Add more dependencies if needed for the interview scenario
+# requests>=2.28.0
+# pandas>=1.5.0
+# numpy>=1.21.0

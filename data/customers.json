@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Alice Johnson",
+    "email": "alice.johnson@email.com",
+    "age": 28,
+    "city": "New York",
+    "subscription": "premium"
+  },
+  {
+    "name": "Bob Smith",
+    "email": "bob.smith@email.com",
+    "age": 34,
+    "city": "Los Angeles",
+    "subscription": "basic"
+  },
+  {
+    "name": "Carol Davis",
+    "email": "carol.davis@email.com",
+    "age": 42,
+    "city": "Chicago",
+    "subscription": "premium"
+  },
+  {
+    "name": "David Wilson",
+    "email": "david.wilson@email.com",
+    "age": 31,
+    "city": "Houston",
+    "subscription": "basic"
+  },
+  {
+    "name": "Eva Brown",
+    "email": "eva.brown@email.com",
+    "age": 26,
+    "city": "Phoenix",
+    "subscription": "premium"
+  },
+  {
+    "name": "Frank Miller",
+    "email": "frank.miller@email.com",
+    "age": 55,
+    "city": "Philadelphia",
+    "subscription": "basic"
+  },
+  {
+    "name": "Grace Taylor",
+    "email": "invalid-email",
+    "age": 29,
+    "city": "San Antonio",
+    "subscription": "premium"
+  },
+  {
+    "name": "",
+    "email": "empty.name@email.com",
+    "age": 33,
+    "city": "San Diego",
+    "subscription": "basic"
+  }
+]
