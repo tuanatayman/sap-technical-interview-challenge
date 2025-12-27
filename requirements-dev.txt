@@ -1,0 +1,24 @@
+# DevOps Requirements - Update requirements.txt with proper dependencies
+
+# Core dependencies  
+pytest>=7.0.0
+pytest-cov>=4.0.0
+
+# TODO: DevOps should add missing dependencies
+# Missing dependencies that cause pipeline failures:
+# - Security scanning tools
+# - Code quality tools  
+# - Monitoring dependencies
+# - Logging frameworks
+
+# BUG: No version pinning for security/reproducibility
+# BUG: Missing transitive dependency management
+# BUG: No security vulnerability scanning
+
+# Uncomment and fix these when implementing DevOps improvements:
+# bandit>=1.7.0  # Security linting
+# safety>=2.0.0  # Vulnerability scanning  
+# black>=22.0.0  # Code formatting
+# flake8>=5.0.0  # Code linting
+# structlog>=22.0.0  # Structured logging
+# prometheus-client>=0.15.0  # Metrics collection

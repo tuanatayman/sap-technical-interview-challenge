@@ -1,0 +1,71 @@
+# TODO: DevOps should implement proper Kubernetes deployment
+# Current state: INCOMPLETE - missing security, monitoring, proper configuration
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: datalib-app
+  labels:
+    app: datalib
+spec:
+  replicas: 2  # TODO: Should be configurable per environment
+  selector:
+    matchLabels:
+      app: datalib
+  template:
+    metadata:
+      labels:
+        app: datalib
+    spec:
+      # BUG: Missing security context
+      # BUG: No resource limits
+      # BUG: Missing health checks
+      containers:
+      - name: datalib
+        image: datalib:latest  # BUG: Should not use latest tag
+        ports:
+        - containerPort: 8000
+        # TODO: Add environment variables from ConfigMap/Secrets
+        # TODO: Add resource requests and limits
+        # TODO: Add liveness and readiness probes
+        # TODO: Add security context (non-root user)
+        
+---
+# TODO: Implement proper service configuration
+apiVersion: v1
+kind: Service
+metadata:
+  name: datalib-service
+spec:
+  selector:
+    app: datalib
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  # TODO: Configure proper service type for environment
+  type: ClusterIP
+  
+---
+# TODO: DevOps should implement ConfigMap for environment config
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: datalib-config
+data:
+  # TODO: Add application configuration
+  environment: "production"
+  # TODO: Add database configuration
+  # TODO: Add monitoring configuration
+  
+---
+# TODO: DevOps should implement Secret management
+apiVersion: v1
+kind: Secret
+metadata:
+  name: datalib-secrets
+type: Opaque
+data:
+  # TODO: Add proper secret management
+  # database-password: <base64-encoded>
+  # api-key: <base64-encoded>

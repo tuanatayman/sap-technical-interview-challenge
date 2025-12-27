@@ -1,6 +1,7 @@
-# Data Processing Library - Technical Interview Project
+# 🛠️ DevOps Technical Interview Challenge
 
-Welcome to the technical interview challenge! This repository contains a Python data processing library with scripts and a CI/CD pipeline that you'll be working with.
+## Welcome!
+This repository contains a **Python data processing platform** with intentional DevOps issues that need to be resolved. Your mission is to identify, diagnose, and fix these problems while implementing DevOps best practices.
 
 ## 📋 Project Overview
 

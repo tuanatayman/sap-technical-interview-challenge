@@ -1,0 +1,47 @@
+# TODO: DevOps should implement comprehensive docker-compose setup
+# Current state: BASIC - needs monitoring, logging, environment configs
+
+version: '3.8'
+
+services:
+  # Main application service
+  datalib-app:
+    build: .
+    # BUG: No environment variables management
+    # BUG: Missing volume mounts for development
+    # BUG: No health checks
+    ports:
+      - "8000:8000"
+    # TODO: Add environment-specific overrides
+    # TODO: Add proper networking
+    # TODO: Add secrets management
+    
+  # TODO: Add monitoring stack
+  # monitoring:
+  #   image: prom/prometheus
+  #   ports:
+  #     - "9090:9090"
+    
+  # TODO: Add logging aggregation  
+  # logging:
+  #   image: grafana/loki
+  #   ports:
+  #     - "3100:3100"
+    
+  # TODO: Add database service
+  # database:
+  #   image: postgres:15
+  #   environment:
+  #     POSTGRES_DB: datalib
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: password
+
+# TODO: Add proper networking
+# networks:
+#   datalib-network:
+#     driver: bridge
+
+# TODO: Add persistent volumes  
+# volumes:
+#   postgres_data:
+#   prometheus_data:
